@@ -3,12 +3,14 @@ const sequelize = require('./config/database');
 const Usuario = require('./models/Usuario');
 const Obra = require('./models/Obra');
 const authRoutes = require('./routes/authRoutes');
+const obrasRoutes = require('./routes/obrasRoutes');
 
 const app = express();
 app.use(express.json());
 
 // Rotas da API
-app.use('/api/auth', authRoutes);
+app.use('/api/auth', authRoutes); // registro + login
+app.use('/api/obras', obrasRoutes); // criar obra + listar
 
 // Rota de teste rápida para provar que a API responde
 app.get('/api/health', (req, res) => {
